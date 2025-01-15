@@ -15,7 +15,8 @@ Este repositório contém uma implementação de um pipeline de dados para proce
 │   ├── kafka/
 │   ├── spark/
 │   └── grafana/
-└── logs/
+├── logs/
+└── scripts/
 ```
 
 ## Pré-requisitos
