@@ -6,6 +6,7 @@ Este repositório contém uma implementação de um pipeline de dados para proce
 ```
 ├── docker-compose.yml
 ├── README.md
+├── requirements.txt
 ├── src/
 │   ├── kafka/
 │   ├── spark/
@@ -15,36 +16,51 @@ Este repositório contém uma implementação de um pipeline de dados para proce
 │   ├── kafka/
 │   ├── spark/
 │   └── grafana/
-├── logs/
-└── scripts/
+└── logs/
 ```
 
 ## Pré-requisitos
 - Docker e Docker Compose
 - Python 3.8+
 - Git
+- Anaconda (opcional, mas recomendado)
 
 ## Configuração Inicial
 
-1. **Clone o Repositório**:
-```bash
-git clone <URL_DO_REPOSITORIO>
-cd streaming-data-pipeline
-```
+### Criar Ambiente Virtual com Anaconda
+1. **Crie o Ambiente**:
+   ```bash
+   conda create -n streaming_pipeline python=3.8
+   ```
 
-2. **Criação do Ambiente Virtual**:
-```bash
-python -m venv .venv
-source .venv/bin/activate  # No Windows, use .venv\Scripts\activate
-pip install --upgrade pip
-```
+2. **Ative o Ambiente**:
+   ```bash
+   conda activate streaming_pipeline
+   ```
 
-3. **Suba os Serviços com Docker Compose**:
-```bash
-docker-compose up -d
-```
+3. **Atualize o `pip`**:
+   ```bash
+   pip install --upgrade pip
+   ```
 
-4. **Verifique os Serviços**:
+4. **Instale Dependências**:
+   Caso esteja usando o ambiente virtual padrão:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   Caso esteja usando Anaconda, instale os pacotes principais com Conda e complemente com Pip:
+   ```bash
+   conda install numpy pandas
+   conda install -c conda-forge pyspark kafka-python
+   pip install -r requirements.txt
+   ```
+
+5. **Suba os Serviços com Docker Compose**:
+   ```bash
+   docker-compose up -d
+   ```
+
+6. **Verifique os Serviços**:
 - Kafka: `localhost:9092`
 - Elasticsearch: `localhost:9200`
 - Kibana: `localhost:5601`
@@ -79,4 +95,3 @@ docker-compose up -d
 
 ## Licença
 Este projeto é licenciado sob a [MIT License](LICENSE).
-
